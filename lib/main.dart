@@ -1,24 +1,20 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/core/constants/app_theme.dart';
-import 'core/router/app_router.dart';
-import 'firebase_options.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/routes/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  try {await Firebase.initializeApp();}catch(e){}
 
   runApp(
     ProviderScope(
       child: ScreenUtilInit(
-        designSize: const Size(375, 812),     // iPhone X base (mobile-first)
+        designSize: const Size(375, 812),
         minTextAdapt: true,
         splitScreenMode: true,
-        useInheritedMediaQuery: true,
         builder: (context, child) {
           return MaterialApp.router(
             routerConfig: appRouter,

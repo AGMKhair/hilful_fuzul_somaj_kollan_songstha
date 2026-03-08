@@ -1,38 +1,50 @@
-// lib/core/constants/app_theme.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static const primaryGreen = Color(0xFF4CAF50);       // Main green
-  static const primaryGreenDark = Color(0xFF388E3C);
-  static const accentOrange = Color(0xFFFF9800);       // Donate / Urgent button
-  static const accentRed = Color(0xFFE53935);          // Emergency notice
-  static const lightBg = Color(0xFFF5F5F5);
-  static const cardWhite = Colors.white;
-  static const textDark = Color(0xFF212121);
-  static const textGrey = Color(0xFF757575);
-  static const divider = Color(0xFFE0E0E0);
+  // Colors from Logo
+  static const Color primaryBlue = Color(0xFF11539D);   // The blue from the logo
+  static const Color primaryGreen = Color(0xFF398200);  // The green from the logo
+  
+  static const Color accentOrange = Color(0xFFFF9800);  // For CTA/Donate
+  static const Color lightBg = Color(0xFFF8F9FA);
+  static const Color cardWhite = Colors.white;
+  static const Color textDark = Color(0xFF2D3436);
+  static const Color textGrey = Color(0xFF636E72);
 
   static ThemeData lightTheme(BuildContext context) {
     return ThemeData(
-      primaryColor: primaryGreen,
-      scaffoldBackgroundColor: lightBg,
+      useMaterial3: true,
+      primaryColor: primaryBlue,
       colorScheme: ColorScheme.light(
-        primary: primaryGreen,
-        secondary: accentOrange,
-        error: accentRed,
+        primary: primaryBlue,
+        secondary: primaryGreen,
+        surface: cardWhite,
+        onPrimary: Colors.white,
+        onSecondary: Colors.white,
       ),
-      appBarTheme: AppBarTheme(
-        backgroundColor: primaryGreen,
+      scaffoldBackgroundColor: lightBg,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: primaryBlue,
         foregroundColor: Colors.white,
         elevation: 0,
+        centerTitle: true,
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        selectedItemColor: primaryBlue,
+        unselectedItemColor: textGrey,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        elevation: 8,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: primaryGreen,
+          backgroundColor: primaryBlue,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+          textStyle: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       textTheme: GoogleFonts.notoSansBengaliTextTheme(
@@ -52,7 +64,7 @@ class AppTheme {
         bodyMedium: GoogleFonts.notoSansBengali(fontSize: 14, color: textGrey),
       ),
       cardTheme: CardThemeData(
-        elevation: 2,
+        elevation: 1,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         color: cardWhite,
       ),
