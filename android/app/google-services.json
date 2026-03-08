@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "630667910672",
+    "firebase_url": "https://fund-management-afd00.firebaseio.com",
+    "project_id": "fund-management-afd00",
+    "storage_bucket": "fund-management-afd00.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630667910672:android:ad3c601936b99e50e47495",
+        "android_client_info": {
+          "package_name": "com.agmkhair.spontit.hilfulfuzul.hilful_fuzul_somaj_kollan_songstha"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpNWCLcQDjdb8eE7QspyecN9YCZsCn3sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

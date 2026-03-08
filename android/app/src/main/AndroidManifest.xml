@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="hilful_fuzul_somaj_kollan_songstha"
+        android:label="হিলফুল ফুজুল"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
