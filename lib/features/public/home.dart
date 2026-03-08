@@ -39,11 +39,18 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Background Pattern/Logo Opacity
                   Center(
-                    child: Opacity(
-                      opacity: 0.1,
-                      child: Icon(Icons.handshake, size: 150.sp, color: Colors.white),
+                    child:
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          errorBuilder: (context, error, stackTrace) => const Icon(Icons.handshake, size: 40, color: Color(0xFF11539D)),
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -56,7 +63,6 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Hero Tagline
                   Center(
                     child: Text(
                       'মানবতার কল্যাণে আমাদের পথচলা',
@@ -67,16 +73,10 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 24.h),
-
-                  // Quick Actions Grid
                   _buildQuickActions(context),
                   SizedBox(height: 30.h),
-
-                  // Impact Counters
                   _buildImpactSection(context),
                   SizedBox(height: 30.h),
-
-                  // This Month Highlights
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -116,7 +116,6 @@ class HomeScreen extends StatelessWidget {
   }
 
   void _showGoals(BuildContext context) {
-    // Navigate to goals or show dialog
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
