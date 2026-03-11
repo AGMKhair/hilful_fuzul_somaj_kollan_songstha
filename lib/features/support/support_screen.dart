@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/core/utils/color_util.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/support/fund_summary_screen.dart';
 
 class SupportScreen extends StatelessWidget {
   const SupportScreen({super.key});
@@ -8,6 +10,13 @@ class SupportScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('সহযোগিতা সেন্টার'),
+        centerTitle: true,
+        foregroundColor: Colors.white,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: ColorUtil.logoGradient,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -20,20 +29,39 @@ class SupportScreen extends StatelessWidget {
               icon: Icons.front_hand,
               color: Theme.of(context).primaryColor,
               onTap: () {
-                // Navigate to Help Request Form
+                // context.go('/help-request');
               },
             ),
             const SizedBox(height: 20),
+
             _buildSupportCard(
               context,
               title: 'ডোনেশন দিন',
               subtitle: 'আপনার সামান্য দানে একজন মানুষের জীবন বদলে যেতে পারে।',
               icon: Icons.volunteer_activism,
-              color: const Color(0xFF398200),
+              color: ColorUtil.logoGreen,
               onTap: () {
-                // Navigate to Donation Form
+                // context.go('/donate');
               },
             ),
+            const SizedBox(height: 20),
+
+            // ✅ New: Fund Summary
+            _buildSupportCard(
+              context,
+              title: 'ফান্ড সারাংশ',
+              subtitle: 'এখন পর্যন্ত মোট ডোনেশন ও মোট ব্যয়ের সংক্ষিপ্ত হিসাব দেখুন।',
+              icon: Icons.pie_chart_rounded,
+              color: ColorUtil.logoBlue,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const FundSummaryScreen()),
+                );
+                // অথবা go_router হলে: context.go('/fund-summary');
+              },
+            ),
+
             const SizedBox(height: 30),
             const Divider(),
             const SizedBox(height: 10),
@@ -49,15 +77,16 @@ class SupportScreen extends StatelessWidget {
   }
 
   Widget _buildSupportCard(
-    BuildContext context, {
-    required String title,
-    required String subtitle,
-    required IconData icon,
-    required Color color,
-    required VoidCallback onTap,
-  }) {
+      BuildContext context, {
+        required String title,
+        required String subtitle,
+        required IconData icon,
+        required Color color,
+        required VoidCallback onTap,
+      }) {
     return InkWell(
       onTap: onTap,
+      borderRadius: BorderRadius.circular(20),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(

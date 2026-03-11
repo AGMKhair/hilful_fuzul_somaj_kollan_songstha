@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/core/utils/color_util.dart';
 
 class MainWrapper extends StatefulWidget {
   final Widget child;
@@ -41,20 +42,47 @@ class _MainWrapperState extends State<MainWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      endDrawer: _buildDrawer(context),
-      body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) => _onItemTapped(index, context),
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.list_alt), label: 'Activities'),
-          BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'Routine'),
-          BottomNavigationBarItem(icon: Icon(Icons.volunteer_activism), label: 'Support'),
-          BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Menu'),
-        ],
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) async {
+        final shouldExit = await showDialog<bool>(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => AlertDialog(
+            title: const Text('অ্যাপ বন্ধ করবেন?'),
+            content: const Text('আপনি কি সত্যিই অ্যাপ থেকে বের হতে চান?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: const Text('না'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: const Text('হ্যাঁ'),
+              ),
+            ],
+          ),
+        );
+
+        if ((shouldExit ?? false)) {
+          Navigator.of(context).pop(); // system back allow
+        }
+      },
+      child: Scaffold(
+        key: _scaffoldKey,
+        endDrawer: _buildDrawer(context),
+        body: widget.child,
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: (index) => _onItemTapped(index, context),
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'হোম'),
+            BottomNavigationBarItem(icon: Icon(Icons.list_alt), label: 'কার্যক্রম'),
+            BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'রুটিন'),
+            BottomNavigationBarItem(icon: Icon(Icons.volunteer_activism), label: 'সহায়তা'),
+            BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'মেনু'),
+          ],
+        ),
       ),
     );
   }
@@ -65,8 +93,8 @@ class _MainWrapperState extends State<MainWrapper> {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
+            decoration: const BoxDecoration(
+              gradient: ColorUtil.logoGradient,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,7 +107,7 @@ class _MainWrapperState extends State<MainWrapper> {
                     padding: const EdgeInsets.all(8.0),
                     child: Image.asset(
                       'assets/images/logo.png',
-                      errorBuilder: (context, error, stackTrace) => const Icon(Icons.handshake, size: 40, color: Color(0xFF11539D)),
+                      errorBuilder: (context, error, stackTrace) => const Icon(Icons.handshake, size: 40, color: ColorUtil.logoBlue),
                     ),
                   ),
                 ),
@@ -95,7 +123,7 @@ class _MainWrapperState extends State<MainWrapper> {
             Navigator.pop(context);
             GoRouter.of(context).go('/profile');
             setState(() {
-              _selectedIndex = 4; // Keep Menu selected or handle highlighting
+              _selectedIndex = 4;
             });
           }),
           const Divider(),
@@ -117,7 +145,7 @@ class _MainWrapperState extends State<MainWrapper> {
 
   Widget _drawerTile(IconData icon, String title, VoidCallback onTap) {
     return ListTile(
-      leading: Icon(icon, color: Theme.of(context).primaryColor),
+      leading: Icon(icon, color: ColorUtil.logoBlue),
       title: Text(title),
       onTap: onTap,
     );

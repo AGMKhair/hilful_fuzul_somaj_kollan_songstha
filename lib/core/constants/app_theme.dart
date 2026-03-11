@@ -3,14 +3,16 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Colors from Logo
-  static const Color primaryBlue = Color(0xFF11539D);   // The blue from the logo
-  static const Color primaryGreen = Color(0xFF398200);  // The green from the logo
+  static const Color primaryBlue = Color(0xFF11539D);   // Correct Blue from logo
+  static const Color primaryGreen = Color(0xFF398200);  // Correct Green from logo
   
   static const Color accentOrange = Color(0xFFFF9800);  // For CTA/Donate
   static const Color lightBg = Color(0xFFF8F9FA);
   static const Color cardWhite = Colors.white;
   static const Color textDark = Color(0xFF2D3436);
   static const Color textGrey = Color(0xFF636E72);
+  static const Color errorRed = Color(0xFFD63031);
+  static const Color successGreen = Color(0xFF27AE60);
 
   static ThemeData lightTheme(BuildContext context) {
     return ThemeData(
@@ -20,8 +22,10 @@ class AppTheme {
         primary: primaryBlue,
         secondary: primaryGreen,
         surface: cardWhite,
+        error: errorRed,
         onPrimary: Colors.white,
         onSecondary: Colors.white,
+        onSurface: textDark,
       ),
       scaffoldBackgroundColor: lightBg,
       appBarTheme: const AppBarTheme(
@@ -37,6 +41,11 @@ class AppTheme {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         elevation: 8,
+      ),
+      tabBarTheme: TabBarThemeData(
+        labelColor: primaryBlue,
+        unselectedLabelColor: textGrey,
+        indicatorColor: primaryBlue,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(

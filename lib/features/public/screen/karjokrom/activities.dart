@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/core/utils/color_util.dart';
 
 class ActivitiesScreen extends StatelessWidget {
   const ActivitiesScreen({super.key});
@@ -8,6 +9,13 @@ class ActivitiesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('আমাদের কার্যক্রম'),
+        centerTitle: true,
+        foregroundColor: Colors.white,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: ColorUtil.logoGradient,
+          ),
+        ),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),

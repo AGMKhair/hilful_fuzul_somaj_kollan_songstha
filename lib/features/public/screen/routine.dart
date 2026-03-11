@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/core/utils/color_util.dart';
 
 class RoutineScreen extends StatelessWidget {
   const RoutineScreen({super.key});
@@ -8,6 +9,13 @@ class RoutineScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('কাজের রুটিন'),
+        centerTitle: true,
+        foregroundColor: Colors.white,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: ColorUtil.logoGradient,
+          ),
+        ),
       ),
       body: DefaultTabController(
         length: 2,
@@ -89,7 +97,7 @@ class RoutineScreen extends StatelessWidget {
   Widget _recurringItem(String title, String timing) {
     return Card(
       child: ListTile(
-        leading: const Icon(Icons.repeat, color: Color(0xFF398200)),
+        leading: const Icon(Icons.repeat, color: ColorUtil.logoGreen),
         title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text(timing),
       ),
