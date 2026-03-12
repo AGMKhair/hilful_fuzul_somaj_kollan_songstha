@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/core/utils/color_util.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/support/donation_screen.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/features/support/fund_summary_screen.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/support/help_request_screen.dart';
 
 class SupportScreen extends StatelessWidget {
   const SupportScreen({super.key});
@@ -29,7 +31,10 @@ class SupportScreen extends StatelessWidget {
               icon: Icons.front_hand,
               color: Theme.of(context).primaryColor,
               onTap: () {
-                // context.go('/help-request');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const HelpRequestScreen()),
+                );
               },
             ),
             const SizedBox(height: 20),
@@ -41,12 +46,15 @@ class SupportScreen extends StatelessWidget {
               icon: Icons.volunteer_activism,
               color: ColorUtil.logoGreen,
               onTap: () {
-                // context.go('/donate');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const DonationScreen()),
+                );
               },
             ),
             const SizedBox(height: 20),
 
-            // ✅ New: Fund Summary
+            // Fund Summary
             _buildSupportCard(
               context,
               title: 'ফান্ড সারাংশ',
@@ -58,7 +66,6 @@ class SupportScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (_) => const FundSummaryScreen()),
                 );
-                // অথবা go_router হলে: context.go('/fund-summary');
               },
             ),
 
