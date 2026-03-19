@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/core/utils/color_util.dart';
 
 class RoutineScreen extends StatelessWidget {
@@ -21,8 +22,12 @@ class RoutineScreen extends StatelessWidget {
         length: 2,
         child: Column(
           children: [
-            const TabBar(
-              tabs: [
+            TabBar(
+              labelColor: ColorUtil.logoBlue,
+              unselectedLabelColor: Colors.grey,
+              indicatorColor: ColorUtil.logoBlue,
+              labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+              tabs: const [
                 Tab(text: 'চলতি মাস'),
                 Tab(text: 'স্থায়ী রুটিন'),
               ],
@@ -42,39 +47,57 @@ class RoutineScreen extends StatelessWidget {
   }
 
   Widget _buildMonthlyRoutine() {
+    // হোম স্ক্রিনের চলমান প্রজেক্ট ডাটা
+    final projects = [
+      {
+        'name': 'কুরআন প্রতিযোগিতা অনুষ্ঠান',
+        'status': 'চলমান',
+        'date': 'রমজান মাস',
+      },
+      {
+        'name': 'ইফতার বিতরণ (১৩৯ পরিবার)',
+        'status': 'সম্পন্ন',
+        'date': '১০-২০ রমজান',
+      },
+      {
+        'name': 'কুরআন শিক্ষা কার্যক্রম',
+        'status': 'চলমান',
+        'date': 'প্রতিদিন',
+      },
+      {
+        'name': 'ইফতার মাহফিল/অনুষ্ঠান',
+        'status': 'আসন্ন',
+        'date': '২৩শে রমজান',
+      },
+    ];
+
     return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: 5,
+      padding: EdgeInsets.all(16.w),
+      itemCount: projects.length,
       itemBuilder: (context, index) {
+        final p = projects[index];
         return Card(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Column(
-                  children: [
-                    const Text('সেপ্টেম্বর', style: TextStyle(fontSize: 12)),
-                    Text('${index + 5}', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                  ],
-                ),
-                const VerticalDivider(),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('ফ্রি মেডিকেল ক্যাম্প', style: TextStyle(fontWeight: FontWeight.bold)),
-                      const Text('স্থান: উত্তরপাড়া প্রাইমারি স্কুল', style: TextStyle(fontSize: 12)),
-                      const SizedBox(height: 5),
-                      Chip(
-                        label: const Text('চলছে', style: TextStyle(fontSize: 10, color: Colors.white)),
-                        backgroundColor: Colors.blue,
-                        padding: EdgeInsets.zero,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+          margin: EdgeInsets.only(bottom: 12.h),
+          child: ListTile(
+            leading: Container(
+              padding: EdgeInsets.all(10.w),
+              decoration: BoxDecoration(
+                color: ColorUtil.logoBlue.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.event_available, color: ColorUtil.logoBlue, size: 24.sp),
+            ),
+            title: Text(p['name']!, style: const TextStyle(fontWeight: FontWeight.bold)),
+            subtitle: Text('সময়: ${p['date']}'),
+            trailing: Chip(
+              label: Text(
+                p['status']!,
+                style: TextStyle(color: Colors.white, fontSize: 10.sp),
+              ),
+              backgroundColor: p['status'] == 'চলমান' 
+                  ? Colors.blue 
+                  : (p['status'] == 'সম্পন্ন' ? ColorUtil.logoGreen : Colors.orange),
+              padding: EdgeInsets.zero,
             ),
           ),
         );
@@ -84,8 +107,9 @@ class RoutineScreen extends StatelessWidget {
 
   Widget _buildRecurringRoutine() {
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16.w),
       children: [
+        _recurringItem('এতিমদের শিক্ষা খাতে ব্যয়', 'প্রতি মাসের নির্দিষ্ট তারিখে'),
         _recurringItem('খাদ্য বিতরণ', 'প্রতি মাসের ১ম শুক্রবার'),
         _recurringItem('সচেতনতা সভা', 'প্রতি মাসের ১৫ তারিখ'),
         _recurringItem('কেস ভিজিট', 'প্রতি বুধবার'),
@@ -96,8 +120,16 @@ class RoutineScreen extends StatelessWidget {
 
   Widget _recurringItem(String title, String timing) {
     return Card(
+      margin: EdgeInsets.only(bottom: 12.h),
       child: ListTile(
-        leading: const Icon(Icons.repeat, color: ColorUtil.logoGreen),
+        leading: Container(
+          padding: EdgeInsets.all(8.w),
+          decoration: BoxDecoration(
+            color: ColorUtil.logoGreen.withOpacity(0.1),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(Icons.repeat, color: ColorUtil.logoGreen, size: 20.sp),
+        ),
         title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text(timing),
       ),

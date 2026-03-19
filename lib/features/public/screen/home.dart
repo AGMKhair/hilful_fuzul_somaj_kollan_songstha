@@ -11,138 +11,127 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    // Demo highlights (আপনি পরে Firestore থেকে আনবেন)
     final highlights = <ProjectHighlight>[
       ProjectHighlight(
         id: 'p1',
         name: 'কুরআন প্রতিযোগিতা অনুষ্ঠান',
-        address: 'ভাওরকোট, জয়াগ , সোনাইমুড়ী , নোয়াখালী',
+        address: 'ভাওরকোট, জয়াগ, সোনাইমুড়ী, নোয়াখালী',
         details:
-        'শিশু-কিশোরদের কুরআন শিক্ষা ও নৈতিক মূল্যবোধ গঠনে উৎসাহিত করতে কুরআন তিলাওয়াত/হিফজ/কিরাত প্রতিযোগিতা আয়োজন করা হয়েছে।',
+            'শিশু-কিশোরদের কুরআন শিক্ষা ও নৈতিক মূল্যবোধ গঠনে উৎসাহিত করতে কুরআন তিলাওয়াত/হিফজ/কিরাত প্রতিযোগিতা আয়োজন করা হয়েছে।',
         imageUrl: null,
       ),
       ProjectHighlight(
         id: 'p2',
-        name: 'ইফতার বিতরণ (১৩৯ পরিবার)',
-        address: 'ভাওরকোট, জয়াগ , সোনাইমুড়ী , নোয়াখালী',
+        name: 'イফতার বিতরণ (১৩৯ পরিবার)',
+        address: 'ভাওরকোট, জয়াগ, সোনাইমুড়ী, নোয়াখালী',
         details:
-        'রমজান মাসে অসহায় ও দরিদ্র ১৩৯টি পরিবারের মাঝে ইফতার সামগ্রী বিতরণ করে মানবিক সহায়তা প্রদান করা হচ্ছে।',
+            'রমজান মাসে অসহায় ও দরিদ্র ১৩৯টি পরিবারের মাঝে ইফতার সামগ্রী বিতরণ করে মানবিক সহায়তা প্রদান করা হচ্ছে।',
         imageUrl: null,
       ),
       ProjectHighlight(
         id: 'p3',
         name: 'কুরআন শিক্ষা কার্যক্রম (পুরুষ ও মহিলা)',
-        address: 'ভাওরকোট, জয়াগ , সোনাইমুড়ী , নোয়াখালী',
+        address: 'ভাওরকোট, জয়াগ, সোনাইমুড়ী, নোয়াখালী',
         details:
-        'পুরুষ ও মহিলাদের জন্য আলাদা ব্যবস্থায় নিয়মিত কুরআন শিক্ষা কার্যক্রম পরিচালিত হচ্ছে—তাজবীদ, নাজেরা ও মৌলিক দ্বীনি শিক্ষা অন্তর্ভুক্ত।',
+            'পুরুষ ও মহিলাদের জন্য আলাদা ব্যবস্থায় নিয়মিত কুরআন শিক্ষা কার্যক্রম পরিচালিত হচ্ছে—তাজবীদ, নাজেরা ও মৌলিক দ্বীনি শিক্ষা অন্তর্ভুক্ত।',
         imageUrl: null,
       ),
       ProjectHighlight(
         id: 'p4',
         name: 'ইফতার মাহফিল/অনুষ্ঠান',
-        address: 'ভাওরকোট, জয়াগ , সোনাইমুড়ী , নোয়াখালী',
+        address: 'ভাওরকোট, জয়াগ, সোনাইমুড়ী, নোয়াখালী',
         details:
-        'রমজানের বরকত ও ভ্রাতৃত্ববোধ জাগ্রত করতে সম্মিলিত ইফতার আয়োজন করা হচ্ছে—দোয়া, সংক্ষিপ্ত আলোচনা ও সামাজিক সম্প্রীতির বার্তা সহ।',
+            'রমজানের বরকত ও ভ্রাতৃত্ববোধ জাগ্রত করতে সম্মিলিত ইফতার আয়োজন করা হচ্ছে—দোয়া, সংক্ষিপ্ত আলোচনা ও সামাজিক সম্প্রীতির বার্তা সহ।',
         imageUrl: null,
       ),
     ];
-    return  Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              expandedHeight: 220.h,
-              floating: false,
-              pinned: true,
-              flexibleSpace: FlexibleSpaceBar(
-                centerTitle: true,
-                title: Text(
-                  'হিলফুল ফুজুল সমাজকল্যাণ সংস্থা',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    shadows: const [Shadow(blurRadius: 10, color: Colors.black45)],
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 220.h,
+            floating: false,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              title: Text(
+                'হিলফুল ফুজুল সমাজকল্যাণ সংস্থা',
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  shadows: const [Shadow(blurRadius: 10, color: Colors.black45)],
+                ),
+              ),
+              background: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      gradient: ColorUtil.logoGradient,
+                    ),
                   ),
-                ),
-                background: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [ColorUtil.logoBlue, ColorUtil.logoGreen],
+                  Center(
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          fit: BoxFit.contain,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const Icon(Icons.handshake, size: 40, color: ColorUtil.logoBlue),
                         ),
                       ),
                     ),
-                    Center(
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundColor: Colors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 5.0),
-                          child: Image.asset(
-                            'assets/images/logo.png',
-                            fit: BoxFit.contain,
-                            errorBuilder: (context, error, stackTrace) =>
-                            const Icon(Icons.handshake, size: 40, color: ColorUtil.logoBlue),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.all(16.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Text(
-                        'মানবতার কল্যাণে আমাদের পথচলা',
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          color: theme.primaryColor,
-                          fontWeight: FontWeight.w600,
-                        ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.all(16.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Text(
+                      'মানবতার কল্যাণে আমাদের পথচলা',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.primaryColor,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                    SizedBox(height: 24.h),
-
-                    _buildQuickActions(context),
-
-                    SizedBox(height: 30.h),
-                    _buildImpactSection(context),
-
-                    SizedBox(height: 30.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('চলতি মাসের হাইলাইটস', style: theme.textTheme.titleLarge),
-                        TextButton(
-                          onPressed: () => context.go('/routine'),
-                          child: const Text('সব দেখুন'),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10.h),
-
-                    _buildHighlightsList(
-                      context: context,
-                      items: highlights,
-                    ),
-
-                    SizedBox(height: 20.h),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 24.h),
+                  _buildQuickActions(context),
+                  SizedBox(height: 30.h),
+                  _buildImpactSection(context),
+                  SizedBox(height: 30.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('চলতি মাসের হাইলাইটস', style: theme.textTheme.titleLarge),
+                      TextButton(
+                        onPressed: () => context.go('/routine'),
+                        child: const Text('সব দেখুন'),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.h),
+                  _buildHighlightsList(
+                    context: context,
+                    items: highlights,
+                  ),
+                  SizedBox(height: 20.h),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -158,11 +147,11 @@ class HomeScreen extends StatelessWidget {
           context,
           Icons.lightbulb,
           'লক্ষ্য',
-              () => context.go('/goals'),
+          () => context.go('/goals'),
         ),
         _actionItem(context, Icons.event_note, 'রুটিন', () => context.go('/routine')),
         _actionItem(context, Icons.volunteer_activism, 'সহযোগিতা', () => context.go('/support')),
-        _actionItem(context, Icons.contact_phone, 'যোগাযোগ', () => context.go('/contact')),
+        _actionItem(context, Icons.contact_phone, 'যোগাযোগ', () => context.push('/contact')),
       ],
     );
   }
@@ -289,9 +278,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-/// Model (later: Firestore থেকে map করবেন)
-
-/// Image widget: image না থাকলে / load fail হলে logo দেখাবে
 class _ProjectImage extends StatelessWidget {
   final double height;
   final String? imageUrl;
@@ -302,22 +288,21 @@ class _ProjectImage extends StatelessWidget {
     final borderRadius = BorderRadius.vertical(top: Radius.circular(12.r));
 
     Widget fallbackLogo() => Container(
-      height: height,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: borderRadius,
-      ),
-      child: Center(
-        child: Image.asset(
-          'assets/images/logo.png',
-          height: 42.h,
-          fit: BoxFit.contain,
-          errorBuilder: (_, __, ___) =>
-              Icon(Icons.image_not_supported, color: Colors.grey[400]),
-        ),
-      ),
-    );
+          height: height,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.grey[100],
+            borderRadius: borderRadius,
+          ),
+          child: Center(
+            child: Image.asset(
+              'assets/images/logo.png',
+              height: 42.h,
+              fit: BoxFit.contain,
+              errorBuilder: (_, __, ___) => Icon(Icons.image_not_supported, color: Colors.grey[400]),
+            ),
+          ),
+        );
 
     if (imageUrl == null || imageUrl!.trim().isEmpty) {
       return fallbackLogo();

@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/about_us_screen.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/constitution_screen.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/contact_screen.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/gallery_screen.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/goals.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/home.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/model/project_hiligts.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/impact_report_screen.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/karjokrom/activities.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/news_notice_screen.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/project/project_details_screen.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/routine.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/settings_screen.dart';
+import 'package:hilful_fuzul_somaj_kollan_songstha/features/public/screen/team_screen.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/features/support/support_screen.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/features/profile/profile_screen.dart';
 import 'package:hilful_fuzul_somaj_kollan_songstha/shared/widgets/main_wrapper.dart';
@@ -48,11 +56,42 @@ final appRouter = GoRouter(
           builder: (context, state) => const GoalsScreen(),
         ),
         GoRoute(
+          path: '/about',
+          builder: (context, state) => const AboutUsScreen(),
+        ),
+        GoRoute(
+          path: '/gallery',
+          builder: (context, state) => const GalleryScreen(),
+        ),
+        GoRoute(
+          path: '/contact',
+          builder: (context, state) => const ContactScreen(),
+        ),
+        GoRoute(
+          path: '/news',
+          builder: (context, state) => const NewsNoticeScreen(),
+        ),
+        GoRoute(
+          path: '/impact',
+          builder: (context, state) => const ImpactReportScreen(),
+        ),
+        GoRoute(
+          path: '/constitution',
+          builder: (context, state) => const ConstitutionScreen(),
+        ),
+        GoRoute(
+          path: '/team',
+          builder: (context, state) => const TeamScreen(),
+        ),
+        GoRoute(
+          path: '/settings',
+          builder: (context, state) => const SettingsScreen(),
+        ),
+        GoRoute(
           path: '/project/:id',
           builder: (context, state) {
             final extra = state.extra;
             if (extra == null || extra is! ProjectHighlight) {
-              // extra না পেলে fallback screen
               return const Scaffold(body: Center(child: Text('ডাটা পাওয়া যায়নি')));
             }
             return ProjectDetailsScreen(project: extra);
